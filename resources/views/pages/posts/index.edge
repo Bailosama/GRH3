@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> AdonisJS - A fully featured web framework for Node.js </title>
+
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="h-full">
+  <div>
+    <h1 class="text-lime-500 text-xl">Liste des posts disponible !</h1>
+    <p><a href="{{ route('posts.form') }}">Creer un post</a></p>
+  </div>
+
+  @if(posts.length === 0)
+  <p>Aucun post disponible</p>
+  @else
+  <table>
+    <thead>
+      <tr class="text-lg text-zinc-600">
+        <th class="p-1">Titre</th>
+        <th class="p-1">Date de creation</th>
+        <th class="p-1">Date de modification</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @each(post in posts)
+      <tr class="text-lg text-zinc-800">
+        <td class="p-1">{{ post.title }}</td>
+        <td class="p-1">{{ post.createdAt.toJSDate().toLocaleString() }}</td>
+        <td class="p-1">{{ post.updatedAt.toJSDate().toLocaleString() }}</td>
+        <td><a href="{{ route('posts.details', [post.id])}}">Details</a></td>
+      </tr>
+      @end
+    </tbody>
+  </table>
+  @end
+</body>
+
+</html>

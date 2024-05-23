@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> AdonisJS - A fully featured web framework for Node.js </title>
+
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="h-full">
+  <h1 class="text-lime-500 text-xl">Formulaire de creation</h1>
+  <form action="{{ route('posts.store') }}" method="post">
+    {{ csrfField() }}
+    <fieldset>
+      <label for="title">Titre</label>
+      <input type="text" id="title" name="title">
+    </fieldset>
+    <fieldset>
+      <label for="content">Contenu</label>
+      <textarea id="content" name="content"></textarea>
+    </fieldset>
+    <fieldset>
+      <button>Creer</button>
+      <input type="reset" value="Effacer">
+    </fieldset>
+  </form>
+</body>
+
+</html>
