@@ -22,6 +22,7 @@ router.group(() => {
 router.group(() => {
   router.get('/', [TeacherController, 'index']).as('teachers.index')
   router.get('teachers/create', [TeacherController, 'form']).as('teachers.form')
+  router.post('teachers/delete', [TeacherController, 'delete']).as('teachers.delete')
   router.get('teachers/:id', [TeacherController, 'details']).as('teachers.details')
   router.post('teachers/create', [TeacherController, 'store']).as('teachers.store')
   router.get('teachers/:id/edit', [TeacherController, 'editForm']).as('teachers.editform')

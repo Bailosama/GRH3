@@ -17,4 +17,7 @@
     dd {
       @apply text-zinc-800 font-mono;
     }
+  .button {
+    @apply px-2 py-1 rounded-md;
+  }
 }

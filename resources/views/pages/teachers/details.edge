@@ -11,35 +11,38 @@
   <div>
   <div class="px-4 sm:px-0 flex justify-between">
     <h3 class="text-base font-semibold leading-7 text-gray-900">Information du professeur</h3>
-    <a href="{{ route('teachers.editform', [teacher.id]) }}" class="bg-blue-400 text-zinc-50 px-2 py-1 rounded-md">Modifier informations</a>
+    <div>
+      <a href="{{ route('teachers.editform', [teacher.id]) }}" class="bg-blue-400 text-zinc-50 px-2 py-1 rounded-md hover:bg-blue-400/85">Modifier informations</a>
+      <button id="delete-button" class="bg-red-400 text-zinc-50 px-2 py-1 rounded-md hover:bg-red-400/85">Supprimer</button>
+    </div>
   </div>
   <div class="mt-4 border-t border-gray-100">
     <dl class="divide-y divide-gray-100">
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
+      <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Nom complet</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ `${teacher.lastname} ${teacher.firstname}` }}</dd>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Departement</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ teacher.department }}</dd>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Adresse email</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ teacher.email }}</dd>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Numéro de Telephone</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ teacher.phone }}</dd>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Adresse</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ teacher.address }}</dd>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Genre</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ teacher.gender }}</dd>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Date de naissance</dt>
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ new Date(teacher.birthdate).toLocaleDateString() }}</dd>
       </div>
@@ -47,5 +50,32 @@
   </div>
   </div>
   </main>
+  <dialog class="rounded-md">
+    <div class="max-w-md w-full bg-zinc-50 p-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">Confirmation de suppression</h2>
+      <p class="text-gray-700 mb-4">Êtes-vous sûr de vouloir supprimer ? Cette action est irréversible.</p>
+      <form action="{{ route('teachers.delete') }}" method="post" class="flex justify-end">
+        {{ csrfField() }}
+        <input type="hidden" value="{{teacher.id}}" name="id" required/>
+        <input type="submit" value="Supprimer" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded mr-2"/>
+        <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">Annuler</button>
+      </form>
+    </div>
+  </dialog>
 </body>
 </html>
+
+<script>
+  const dialog = document.querySelector('dialog');
+  const deleteButton = document.querySelector('button');
+  const closeButton = dialog.querySelector('button:last-child');
+
+  deleteButton.addEventListener('click', () => {
+    dialog.showModal();
+  });
+
+  closeButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    dialog.close();
+  });
+</script>

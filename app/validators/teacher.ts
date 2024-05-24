@@ -18,6 +18,11 @@ export const createTeacherValidator = vine.compile(
     department: vine.number().range([DepartmentName.GIT, DepartmentName.Droit]),
   })
 )
+export const deleteTeacherValidator = vine.compile(
+  vine.object({
+    id: vine.number().positive(),
+  })
+)
 
 const messages = {
   'lastname': 'Le nom ne doit contenir que des lettres',
@@ -37,5 +42,9 @@ const messages = {
   'department': 'Le department doit être un des departements disponibles',
   'department.range': 'Le department doit être un des departements disponibles',
 }
-
+const deleteMessages = {
+  'id': "l'identifiant doit être un nombre entier",
+  'id.positive': "l'identifiant doit être un nombre entier positif",
+}
 createTeacherValidator.messagesProvider = new SimpleMessagesProvider(messages)
+deleteTeacherValidator.messagesProvider = new SimpleMessagesProvider(deleteMessages)
