@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> AdonisJS</title>
+
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="h-full">
+  <main class="space-y-2 mt-2 px-5">
+    <div class="flex justify-between">
+      <p>Professeur(s) <em class="rounded-md font-semibold font-mono bg-gray-100 p-1 text-blue-500">{{ teachers.length }}</em></p>
+      <div>
+        <input type="search" placeholder="Rechercher" />
+        <a href="{{ route('teachers.form') }}" class="rounded-md bg-blue-400 px-2 py-1 active:opacity-85 active:scale-110 text-zinc-50">+ Ajouter</a>
+      </div>
+    </div>
+    <div class="space-y-1">
+      @if(teachers.length === 0)
+        <p class="text-center text-2xl text-zinc-800">Aucun professeur trouvé</p>
+      @else
+        @each(teacher in teachers)
+          @!teacher.card({name :`${teacher.lastname} ${teacher.firstname}`, email : teacher.email, phone : teacher.phone, department : teacher.department, id: teacher.id})
+        @end
+      @end
+    </div>
+  </main>
+</body>
+
+</html>

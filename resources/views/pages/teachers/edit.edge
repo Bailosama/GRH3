@@ -11,12 +11,12 @@
 
 <body class="bg-gray-100 p-6">
   <div class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
-    <h2 class="text-xl font-semibold mb-6">Ajouter un enseignant</h2>
+    <h2 class="text-xl font-semibold mb-6">Modifier renseignant</h2>
     <form action="#" method="POST">
       {{ csrfField() }}
       <div class="mb-4">
         <label for="lastname" class="block text-gray-700 font-semibold mb-2">Nom de famille</label>
-        <input type="text" value="{{ old('lastname') || '' }}" id="lastname" name="lastname" class="form-input w-full" required>
+        <input type="text" value="{{ old('lastname') || teacher.lastname }}" id="lastname" name="lastname" class="form-input w-full" required>
         @inputError('lastname')
           @each(message in $messages)
             <p class="text-red-400">{{ message }}</p>
@@ -25,7 +25,7 @@
       </div>
       <div class="mb-4">
         <label for="firstname" class="block text-gray-700 font-semibold mb-2">Prénom</label>
-        <input type="text" value="{{ old('firstname') || '' }}" id="firstname" name="firstname" class="form-input w-full" required>
+        <input type="text" value="{{ old('firstname') || teacher.firstname }}" id="firstname" name="firstname" class="form-input w-full" required>
         @inputError('firstname')
           @each(message in $messages)
             <p class="text-red-400">{{ message }}</p>
@@ -34,7 +34,7 @@
       </div>
       <div class="mb-4">
         <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-        <input type="email" value="{{ old('email') || '' }}" id="email" name="email" class="form-input w-full" required>
+        <input type="email" value="{{ old('email') || teacher.email }}" id="email" name="email" class="form-input w-full" required>
         @inputError('eemail')
           @each(message in $messages)
             <p class="text-red-400">{{ message }}</p>
@@ -43,7 +43,7 @@
       </div>
       <div class="mb-4">
         <label for="phone" class="block text-gray-700 font-semibold mb-2">Téléphone</label>
-        <input type="text" value="{{ old('phone') || '' }}" id="phone" name="phone" class="form-input w-full" required>
+        <input type="text" value="{{ old('phone') || teacher.phone }}" id="phone" name="phone" class="form-input w-full" required>
         @inputError('phone')
           @each(message in $messages)
             <p class="text-red-400">{{ message }}</p>
@@ -52,7 +52,7 @@
       </div>
       <div class="mb-4">
         <label for="gender" class="block text-gray-700 font-semibold mb-2">Genre</label>
-        <select id="gender" name="gender" class="form-select w-full" required>
+        <select id="gender" name="gender"  class="form-select w-full" required>
           <option value="0">Homme</option>
           <option value="1">Femme</option>
         </select>
@@ -64,7 +64,7 @@
       </div>
       <div class="mb-4">
         <label for="birthdate" class="block text-gray-700 font-semibold mb-2">Date de naissance</label>
-        <input type="date" value="{{ old('birthdate') || '' }}" id="date" name="birthdate" class="form-input w-full" required>
+        <input type="date" value="{{ old('birthdate') || new Date(teacher.birthdate) }}" id="date" name="birthdate" class="form-input w-full" required>
         @inputError('birthdate')
           @each(message in $messages)
             <p class="text-red-400">{{ message }}</p>
@@ -73,7 +73,7 @@
       </div>
       <div class="mb-4">
         <label for="address" class="block text-gray-700 font-semibold mb-2">Adresse</label>
-        <input id="address" value="{{ old('address') || '' }}" name="address" class="form-textarea w-full border p-1 border-blue-400" placeholder="Quartier/Commune" required>
+        <input id="address" value="{{ old('address') || teacher.address }}" name="address" class="form-textarea w-full border p-1 border-blue-400" placeholder="Quartier/Commune" required>
         @inputError('address')
           @each(message in $messages)
             <p class="text-red-400">{{ message }}</p>

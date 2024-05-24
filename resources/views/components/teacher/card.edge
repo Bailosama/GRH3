@@ -1,0 +1,24 @@
+<div class="rounded-sm bg-slate-200 p-2 md:px-10">
+  <dl class="flex justify-between">
+      <span>
+        <dt>Nom et prenom</dt>
+        <dd>{{ name || 'name'}}</dd>
+      </span>
+      <span>
+        <dt>Email</dt>
+        <dd>{{ email || 'janedoe@hot.com'}}</dd>
+      </span>
+      <span>
+        <dt>Telephone</dt>
+        <dd>{{ phone || '600 000 000'}}</dd>
+      </span>
+      <span>
+        <dt>Departement</dt>
+        <dd>{{ department || 'Nom departement'}}</dd>
+      </span>
+      <span>
+        <dt>Action</dt>
+        <dd><a href="{{ route('teachers.details', [id])}}" class="bg-zinc-50 rounded-sm border px-2 py-1">Details</a></dd>
+      </span>
+  </dl>
+</div>

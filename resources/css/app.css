@@ -3,10 +3,18 @@
 @tailwind utilities;
 
 @layer base{
-  a {
-    @apply text-blue-500 hover:opacity-90 hover:text-slate-500 active:text-slate-700
-  }
   input[type="text"], input[type="email"] {
-    @apply border border-blue-400 py-1 px-2
+    @apply border border-blue-400 py-1 px-2;
   }
+    input[type="search"] {
+      @apply border border-zinc-200 px-2 py-1 outline-none ring-zinc-500 focus:ring-1;
+    }
+
+    dt {
+      @apply text-zinc-500 font-medium;
+    }
+
+    dd {
+      @apply text-zinc-800 font-mono;
+    }
 }

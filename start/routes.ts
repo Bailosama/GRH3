@@ -11,7 +11,6 @@ import router from '@adonisjs/core/services/router'
 
 const PostController = () => import('#controllers/posts_controller')
 const TeacherController = () => import('#controllers/teachers_controller')
-router.on('/').render('pages/home')
 
 router.group(() => {
   router.get('posts', [PostController, 'index']).as('index')
@@ -21,5 +20,10 @@ router.group(() => {
 })
 
 router.group(() => {
+  router.get('/', [TeacherController, 'index']).as('teachers.index')
   router.get('teachers/create', [TeacherController, 'form']).as('teachers.form')
+  router.get('teachers/:id', [TeacherController, 'details']).as('teachers.details')
+  router.post('teachers/create', [TeacherController, 'store']).as('teachers.store')
+  router.get('teachers/:id/edit', [TeacherController, 'editForm']).as('teachers.editform')
+  router.post('teachers/edit', [TeacherController, 'update']).as('teachers.edit')
 })
