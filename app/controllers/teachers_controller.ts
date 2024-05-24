@@ -45,11 +45,25 @@ export default class TeachersController {
   async editForm({ view, params, response }: HttpContext) {
     try {
       const teacher = await Teacher.findOrFail(params.id)
-
       return view.render('pages/teachers/edit', { teacher, DepartmentNameText, GenderText })
     } catch (error) {
       response.redirect().toPath('pages/errors/not_found')
     }
   }
-  async update({}: HttpContext) {}
+  async update({ request, params, response }: HttpContext) {
+    const { gender, department, ...payload } = await request.validateUsing(createTeacherValidator)
+
+    try {
+      const teacher = await Teacher.findOrFail(params.id)
+      teacher.merge(payload)
+      teacher.department = DepartmentNameText[department as IDepartmentName]
+      teacher.gender = GenderText[gender as IGender]
+      await teacher.save()
+
+      response.redirect().toRoute('teachers.index')
+    } catch (error) {
+      console.error(error)
+      response.redirect().toRoute('teachers.index')
+    }
+  }
 }

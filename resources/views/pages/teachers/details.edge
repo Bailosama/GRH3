@@ -9,9 +9,9 @@
 <body class="">
   <main class="space-y-2 mt-2 px-5">
   <div>
-  <div class="px-4 sm:px-0">
+  <div class="px-4 sm:px-0 flex justify-between">
     <h3 class="text-base font-semibold leading-7 text-gray-900">Information du professeur</h3>
-    <a href="{{ route('teachers.editform', [teacher.id]) }}">Modifier informations</a>
+    <a href="{{ route('teachers.editform', [teacher.id]) }}" class="bg-blue-400 text-zinc-50 px-2 py-1 rounded-md">Modifier informations</a>
   </div>
   <div class="mt-4 border-t border-gray-100">
     <dl class="divide-y divide-gray-100">
