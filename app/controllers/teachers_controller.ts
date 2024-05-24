@@ -4,7 +4,7 @@ import { GenderText } from '#enums/gender_type'
 import type { IGender } from '#enums/gender_type'
 import { DepartmentNameText } from '#enums/departments_name'
 import type { IDepartmentName } from '#enums/departments_name'
-import { createTeacherValidator } from '#validators/teacher'
+import { createTeacherValidator, deleteTeacherValidator } from '#validators/teacher'
 
 export default class TeachersController {
   async form({ view }: HttpContext) {
@@ -59,6 +59,19 @@ export default class TeachersController {
       teacher.department = DepartmentNameText[department as IDepartmentName]
       teacher.gender = GenderText[gender as IGender]
       await teacher.save()
+
+      response.redirect().toRoute('teachers.index')
+    } catch (error) {
+      console.error(error)
+      response.redirect().toRoute('teachers.index')
+    }
+  }
+  async delete({ response, request }: HttpContext) {
+    const { id } = await request.validateUsing(deleteTeacherValidator)
+
+    try {
+      const teacher = await Teacher.findOrFail(id)
+      await teacher.delete()
 
       response.redirect().toRoute('teachers.index')
     } catch (error) {
