@@ -9,7 +9,7 @@ export default class Teacher extends BaseModel {
   declare lastname: string
 
   @column()
-  declare firstanme: string
+  declare firstname: string
 
   @column()
   declare email: string
@@ -21,13 +21,13 @@ export default class Teacher extends BaseModel {
   declare gender: string
 
   @column()
-  declare date: Date
+  declare birthdate: Date
 
   @column()
-  declare adress: string
+  declare address: string
 
   @column()
-  declare departemnt: string
+  declare department: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

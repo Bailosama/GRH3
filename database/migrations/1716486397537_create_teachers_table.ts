@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.string('email').unique().notNullable()
       table.string('phone').unique().notNullable()
       table.string('gender')
-      table.date('birthday')
+      table.date('birthdate')
       table.string('address').notNullable()
       table.string('department').notNullable()
       table.timestamp('created_at')
