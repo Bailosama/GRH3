@@ -14,6 +14,7 @@ export default class extends BaseSchema {
       table.date('birthdate')
       table.string('address').notNullable()
       table.string('department').notNullable()
+      table.string('file').notNullable()
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <title>Congés</title>
+
+</head>
+
+<body>
+  <div class="container mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Congés</h1>
+    <a href="{{route('addconge.addc')}}"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">Ajouter
+      un congé</a>
+    <table class="table-auto w-full">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">ID</th>
+          <th class="px-4 py-2">Nom</th>
+          <th class="px-4 py-2">Début</th>
+          <th class="px-4 py-2">Fin</th>
+          <th class="px-4 py-2">Statut</th>
+          <th class="px-4 py-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{-- @foreach(conges as conge)
+        <tr>
+          <td class="border px-4 py-2">{{ conge.id }}</td>
+          <td class="border px-4 py-2">{{ conge.nom }}</td>
+          <td class="border px-4 py-2">{{ conge.debut }}</td>
+          <td class="border px-4 py-2">{{ conge.fin }}</td>
+          <td class="border px-4 py-2">{{ conge.statut }}</td>
+          <td class="border px-4 py-2 flex">
+            <a href="/conges/edit/{{ conge.id }}"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Modifier</a>
+            <form action="/conges/delete/{{ conge.id }}" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit"
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Supprimer</button>
+            </form>
+          </td>
+        </tr>
+        @end
+      </tbody> --}}
+    </table>
+  </div>
+</body>
+
+</html>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> AdonisJS - A fully featured web framework for Node.js </title>
+  <title>Registrer </title>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -16,112 +16,99 @@
       {{ csrfField() }}
       <div class="mb-4">
         <label for="lastname" class="block text-gray-700 font-semibold mb-2">Nom de famille</label>
-        <input type="text" value="{{ old('lastname') || teacher.lastname }}" id="lastname" name="lastname" class="form-input w-full" required>
+        <input type="text" value="{{ old('lastname') || teacher.lastname }}" id="lastname" name="lastname"
+          class="form-input w-full" required>
         @inputError('lastname')
-          @each(message in $messages)
-            <p class="text-red-400">{{ message }}</p>
-          @end
+        @each(message in $messages)
+        <p class="text-red-400">{{ message }}</p>
+        @end
         @end
       </div>
       <div class="mb-4">
         <label for="firstname" class="block text-gray-700 font-semibold mb-2">Prénom</label>
-        <input type="text" value="{{ old('firstname') || teacher.firstname }}" id="firstname" name="firstname" class="form-input w-full" required>
+        <input type="text" value="{{ old('firstname') || teacher.firstname }}" id="firstname" name="firstname"
+          class="form-input w-full" required>
         @inputError('firstname')
-          @each(message in $messages)
-            <p class="text-red-400">{{ message }}</p>
-          @end
+        @each(message in $messages)
+        <p class="text-red-400">{{ message }}</p>
+        @end
         @end
       </div>
       <div class="mb-4">
         <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-        <input type="email" value="{{ old('email') || teacher.email }}" id="email" name="email" class="form-input w-full" required>
+        <input type="email" value="{{ old('email') || teacher.email }}" id="email" name="email"
+          class="form-input w-full" required>
         @inputError('eemail')
-          @each(message in $messages)
-            <p class="text-red-400">{{ message }}</p>
-          @end
+        @each(message in $messages)
+        <p class="text-red-400">{{ message }}</p>
+        @end
         @end
       </div>
       <div class="mb-4">
         <label for="phone" class="block text-gray-700 font-semibold mb-2">Téléphone</label>
-        <input type="text" value="{{ old('phone') || teacher.phone }}" id="phone" name="phone" class="form-input w-full" required>
+        <input type="text" value="{{ old('phone') || teacher.phone }}" id="phone" name="phone" class="form-input w-full"
+          required>
         @inputError('phone')
-          @each(message in $messages)
-            <p class="text-red-400">{{ message }}</p>
-          @end
+        @each(message in $messages)
+        <p class="text-red-400">{{ message }}</p>
+        @end
         @end
       </div>
       <div class="mb-4">
         <label for="gender" class="block text-gray-700 font-semibold mb-2">Genre</label>
-        <select id="gender" name="gender"  class="form-select w-full" required>
-          <option value="0" {{
-            html.attrs({
-              selected: GenderText[0] === teacher.gender,
-            })
-          }}>Homme</option>
-          <option value="1" {{
-            html.attrs({
-              selected: GenderText[1] === teacher.gender,
-            })
-          }}>Femme</option>
+        <select id="gender" name="gender" class="form-select w-full" required>
+          <option value="0" {{ html.attrs({ selected: GenderText[0]===teacher.gender, }) }}>Homme</option>
+          <option value="1" {{ html.attrs({ selected: GenderText[1]===teacher.gender, }) }}>Femme</option>
         </select>
         @inputError('gender')
-          @each(message in $messages)
-            <p class="text-red-400">{{ message }}</p>
-          @end
+        @each(message in $messages)
+        <p class="text-red-400">{{ message }}</p>
+        @end
         @end
       </div>
       <div class="mb-4">
         <label for="birthdate" class="block text-gray-700 font-semibold mb-2">Date de naissance</label>
-        <input type="date" value="{{ old('birthdate') || (new Date(teacher.birthdate).toISOString().split('T')[0]) }}" id="date" name="birthdate" class="form-input w-full" required>
+        <input type="date" value="{{ old('birthdate') || (new Date(teacher.birthdate).toISOString().split('T')[0]) }}"
+          id="date" name="birthdate" class="form-input w-full" required>
         @inputError('birthdate')
-          @each(message in $messages)
-            <p class="text-red-400">{{ message }}</p>
-          @end
+        @each(message in $messages)
+        <p class="text-red-400">{{ message }}</p>
+        @end
         @end
       </div>
       <div class="mb-4">
         <label for="address" class="block text-gray-700 font-semibold mb-2">Adresse</label>
-        <input id="address" value="{{ old('address') || teacher.address }}" name="address" class="form-textarea w-full border p-1 border-blue-400" placeholder="Quartier/Commune" required>
+        <input id="address" value="{{ old('address') || teacher.address }}" name="address"
+          class="form-textarea w-full border p-1 border-blue-400" placeholder="Quartier/Commune" required>
         @inputError('address')
-          @each(message in $messages)
-            <p class="text-red-400">{{ message }}</p>
-          @end
+        @each(message in $messages)
+        <p class="text-red-400">{{ message }}</p>
+        @end
         @end
       </div>
       <div class="mb-4">
         <label for="department" class="block text-gray-700 font-semibold mb-2">Département</label>
         <select id="department" name="department">
-          <option value="0" {{
-            html.attrs({
-              selected: DepartmentNameText[0] === teacher.department,
-            })
-          }}
-            >Genie informatique</option>
-          <option value="1" {{
-            html.attrs({
-              selected: DepartmentNameText[1] === teacher.department,
-            })
-          }}>Genie Civil</option>
-          <option value="2" {{
-            html.attrs({
-              selected: DepartmentNameText[2] === teacher.department,
-            })
-          }}>Economie</option>
-          <option value="3" {{
-            html.attrs({
-              selected: DepartmentNameText[3] === teacher.department,
-            })
-          }}>Droit</option>
+          <option value="0" {{ html.attrs({ selected: DepartmentNameText[0]===teacher.department, }) }}>Genie
+            informatique</option>
+          <option value="1" {{ html.attrs({ selected: DepartmentNameText[1]===teacher.department, }) }}>Genie Civil
+          </option>
+          <option value="2" {{ html.attrs({ selected: DepartmentNameText[2]===teacher.department, }) }}>Economie
+          </option>
+          <option value="3" {{ html.attrs({ selected: DepartmentNameText[3]===teacher.department, }) }}>Droit</option>
         </select>
         @inputError('department')
-          @each(message in $messages)
-            <p class="text-red-400">{{ message }}</p>
-          @end
+        @each(message in $messages)
+        <p class="text-red-400">{{ message }}</p>
+        @end
         @end
       </div>
       <div class="mt-6 flex gap-x-5">
-        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 active:scale-105">Appliquer modifications</button>
-        <input type="reset" value="Effacer les modifications" class="bg-zinc-50 rounded-md px-2 py-1 border cursor-pointer active:bg-zinc-100 hover:opacity-85 active:scale-105">
+        <button type="submit"
+          class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 active:scale-105">Appliquer
+          modifications</button>
+        <input type="reset" value="Effacer les modifications"
+          class="bg-zinc-50 rounded-md px-2 py-1 border cursor-pointer active:bg-zinc-100 hover:opacity-85 active:scale-105">
       </div>
     </form>
   </div>

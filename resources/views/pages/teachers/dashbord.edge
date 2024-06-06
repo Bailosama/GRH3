@@ -1,0 +1,73 @@
+<!-- resources/views/dashboard.edge -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <title>Dashboard</title>
+  <!-- Include Tailwind CSS -->
+</head>
+
+<body class="bg-gray-100">
+  <div style=" display: flex; height: 100vh;">
+    <div style="width: 25% ; display: flex; flex-direction: column; background-color: darkslategrey;">
+      <div class="max-w-3xl mx-auto">
+
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+          <h1 class="text-2xl font-semibold">Dashboard</h1>
+          <!-- Add Logout Button or User Profile Menu Here -->
+        </header>
+
+        <!-- Dashboard -->
+        <div class="grid grid-cols-2 gap-6" style="display: flex; flex-direction: column;">
+          <!-- Add Professor -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-4">Ajouter un Professeur</h2>
+            <a href="{{ route('teachers.form') }}"
+              class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</a>
+          </div>
+
+          <!-- Take Leave -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-4">Prendre des Congés</h2>
+
+            <!-- Leave Form -->
+            <form action="/take-leave" method="POST">
+              <a href="{{ route('conges.index') }}"
+                class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</a>
+            </form>
+          </div>
+
+          <!-- Add Student -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-4">Ajouter un Étudiant</h2>
+            <!-- Add Student Form -->
+            <form action="/add-student" method="POST">
+              <!-- Student Form Fields -->
+              <!-- Example: Name, Email, Department -->
+              <!-- Use Tailwind CSS for styling -->
+              <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>
+            </form>
+          </div>
+
+          <!-- Professor Timetable -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-4">Emploi du Temps du Professeur</h2>
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style=" width: 75%; height: 100%;">
+      <p>loremmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
+    </div>
+  </div>
+</body>
+
+</html>

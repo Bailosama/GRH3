@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { MultipartFile } from '@adonisjs/core/bodyparser'
 
 export default class Teacher extends BaseModel {
   @column({ isPrimary: true })
@@ -28,6 +29,9 @@ export default class Teacher extends BaseModel {
 
   @column()
   declare department: string
+
+  @column()
+  declare files: MultipartFile
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

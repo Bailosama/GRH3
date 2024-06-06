@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter un congé</title>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="container mx-auto grid grid-cols-12 gap-4">
+    <div class="col-span-3 bg-gray-100 p-4">
+      <ul>
+        <li><a href="{{route('dashbord.dashbord')}}" class="block py-2 px-4 rounded-md hover:bg-gray-200">Acceuil</a>
+        </li>
+        <li><a href="{{route('teachers.index')}}" class="block py-2 px-4 rounded-md hover:bg-gray-200">Ajouter un
+            enseignant</a>
+        </li>
+
+        <li><a href="/conges/add" class="block py-2 px-4 rounded-md hover:bg-gray-200">Ajouter un congé</a></li>
+        <li><a href="/etudiants/add" class="block py-2 px-4 rounded-md hover:bg-gray-200">Ajouter un étudiant</a></li>
+      </ul>
+    </div>
+    <div class="col-span-9 bg-white p-4 rounded-md shadow-md">
+      <h1 class="text-3xl font-bold mb-4">Ajouter un congé</h1>
+      <form action="/conges" method="POST" class="space-y-4">
+        {{ csrfField() }}
+        <div>
+          <label for="nom" class="block font-medium mb-1">Nom</label>
+          <input type="text" id="nom" name="nom"
+            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-indigo-500"
+            required>
+        </div>
+        <div>
+          <label for="date_debut" class="block font-medium mb-1">Date de début</label>
+          <input type="date" id="date_debut" name="date_debut"
+            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-indigo-500"
+            required>
+        </div>
+        <div>
+          <label for="date_fin" class="block font-medium mb-1">Date de fin</label>
+          <input type="date" id="date_fin" name="date_fin"
+            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-indigo-500"
+            required>
+        </div>
+        <div>
+          <label for="motif" class="block font-medium mb-1">Motif</label>
+          <textarea id="motif" name="motif" rows="4"
+            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-indigo-500"
+            required></textarea>
+        </div>
+        <div>
+          <label for="duree" class="block font-medium mb-1">Durée</label>
+          <input type="number" id="duree" name="duree"
+            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-indigo-500"
+            required>
+        </div>
+        <div>
+          <label for="etat" class="block font-medium mb-1">État</label>
+          <select id="etat" name="etat"
+            class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:border-indigo-500"
+            required>
+            <option value="">-- Choisir un état --</option>
+            <option value="en attente">En attente</option>
+            <option value="accepté">Accepté</option>
+            <option value="refusé">Refusé</option>
+          </select>
+        </div>
+        <button type="submit"
+          class="bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-md">Ajouter</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
