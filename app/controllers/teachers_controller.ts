@@ -4,15 +4,8 @@ import { GenderText } from '#enums/gender_type'
 import type { IGender } from '#enums/gender_type'
 import { DepartmentNameText } from '#enums/departments_name'
 import type { IDepartmentName } from '#enums/departments_name'
-<<<<<<< Updated upstream
 import { createTeacherValidator, deleteTeacherValidator } from '#validators/teacher'
-=======
-import { createTeacherValidator } from '#validators/teacher'
-import app from '@adonisjs/core/services/app'
 import { cuid } from '@adonisjs/core/helpers'
-import { Application } from '@adonisjs/core/app'
-import { Helpers } from '@adonisjs/core/build/standalone'
->>>>>>> Stashed changes
 
 export default class TeachersController {
   async form({ view }: HttpContext) {
@@ -55,7 +48,7 @@ export default class TeachersController {
 
       // Vérifier si le déplacement du fichier a réussi
       if (!file.isValid) {
-        throw new Error(file.error())
+        throw new Error(file.errors())
       }
 
       // Sauvegarder le chemin du fichier dans la base de données
