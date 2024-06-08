@@ -1,121 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> AdonisJS - A fully featured web framework for Node.js </title>
-
+  <title>GRH3</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Si vous utilisez Vite pour charger vos fichiers CSS et JS -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-100 p-6">
-  <div class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
-    <h2 class="text-xl font-semibold mb-6">Ajouter un enseignant</h2>
-    <form action="#" method="POST">
-      {{ csrfField() }}
-      <div class="mb-4">
-        <label for="lastname" class="block text-gray-700 font-semibold mb-2">Nom de famille</label>
-        <input type="text" value="{{ old('lastname') || '' }}" id="lastname" name="lastname" class="form-input w-full"
-          required>
-        @inputError('lastname')
-        @each(message in $messages)
-        <p class="text-red-400">{{ message }}</p>
-        @end
-        @end
+<body class="bg-gray-100">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="bg-gray-800 w-64 flex flex-col p-4 space-y-4">
+      <div class="flex items-center space-x-2">
+        <img src="path/to/your/avatar.jpg" alt="Avatar" class="w-10 h-10 rounded-full">
+        <div>
+          <h2 class="text-white text-lg">admin mr</h2>
+          <span class="text-gray-400">Administrateur</span>
+        </div>
       </div>
-      <div class="mb-4">
-        <label for="firstname" class="block text-gray-700 font-semibold mb-2">Prénom</label>
-        <input type="text" value="{{ old('firstname') || '' }}" id="firstname" name="firstname"
-          class="form-input w-full" required>
-        @inputError('firstname')
-        @each(message in $messages)
-        <p class="text-red-400">{{ message }}</p>
-        @end
-        @end
-      </div>
-      <div class="mb-4">
-        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-        <input type="email" value="{{ old('email') || '' }}" id="email" name="email" class="form-input w-full" required>
-        @inputError('eemail')
-        @each(message in $messages)
-        <p class="text-red-400">{{ message }}</p>
-        @end
-        @end
-      </div>
-      <div class="mb-4">
-        <label for="phone" class="block text-gray-700 font-semibold mb-2">Téléphone</label>
-        <input type="text" value="{{ old('phone') || '' }}" id="phone" name="phone" class="form-input w-full" required>
-        @inputError('phone')
-        @each(message in $messages)
-        <p class="text-red-400">{{ message }}</p>
-        @end
-        @end
-      </div>
-      <div class="mb-4">
-        <label for="gender" class="block text-gray-700 font-semibold mb-2">Genre</label>
-        <select id="gender" name="gender" class="form-select w-full" required>
-          <option value="0">Homme</option>
-          <option value="1">Femme</option>
-        </select>
-        @inputError('gender')
-        @each(message in $messages)
-        <p class="text-red-400">{{ message }}</p>
-        @end
-        @end
-      </div>
-      <div class="mb-4">
-        <label for="birthdate" class="block text-gray-700 font-semibold mb-2">Date de naissance</label>
-        <input type="date" value="{{ old('birthdate') || '' }}" id="date" name="birthdate" class="form-input w-full"
-          required>
-        @inputError('birthdate')
-        @each(message in $messages)
-        <p class="text-red-400">{{ message }}</p>
-        @end
-        @end
-      </div>
+      <nav class="flex flex-col space-y-2">
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Tableau de bord</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Rentrées</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Élèves</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Calendrier scolaire</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Parents</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Prévision inscription</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Événements</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Comptes</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Liste des tâches</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Réglages</a>
+      </nav>
+    </aside>
 
-      <div class="mb-4">
-        <label for="department" class="block text-gray-700 font-semibold mb-2">Département</label>
-        <select id="department" name="department">
-          <option value="0">Genie informatique</option>
-          <option value="1">Genie Civil</option>
-          <option value="2">Economie</option>
-          <option value="3">Droit</option>
-        </select>
-        @inputError('department')
-        @each(message in $messages)
-        <p class="text-red-400">{{ message }}</p>
-        @end
-        @end
-      </div>
-      <div class="mb-4">
-        <label for="address" class="block text-gray-700 font-semibold mb-2">Adresse</label>
-        <input id="address" value="{{ old('address') || '' }}" name="address"
-          class="form-textarea w-full border p-1 border-blue-400" placeholder="Quartier,Commune" required>
-        @inputError('address')
-        @each(message in $messages)
-        <p class="text-red-400">{{ message }}</p>
-        @end
-        @end
-      </div>
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col p-4">
+      <!-- Header -->
+      <header class="bg-white shadow-md p-4 flex justify-between items-center mb-4">
+        <h1 class="text-xl font-bold">Ajouter un Enseignant</h1>
+        <div class="flex items-center space-x-4">
+          <button class="bg-gray-200 p-2 rounded-full">🔔</button>
+          <button class="bg-gray-200 p-2 rounded-full">✉️</button>
+          <img src="path/to/your/avatar.jpg" alt="Avatar" class="w-10 h-10 rounded-full">
+        </div>
+      </header>
 
-      <div class="mb-4">
-        <label for="file" class="block text-gray-700 font-semibold mb-2">Fichier</label>
-        <input type="file" id="file" name="file" class="form-input w-full">
-        @inputError('file')
-        @each(message in $messages)
-        <p class="text-red-400">{{ message }}</p>
-        @end
-        @end
+      <!-- Form Container -->
+      <div class="bg-white p-8 rounded shadow-md mx-auto max-w-4xl">
+        <h2 class="text-2xl font-semibold mb-6 text-center">Ajouter un enseignant</h2>
+        <form action="" method="POST">
+          {{ csrfField() }}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="mb-4">
+              <label for="lastname" class="block text-gray-700 font-semibold mb-2">Nom de famille</label>
+              <input type="text" value="{{ old('lastname') || '' }}" id="lastname" name="lastname"
+                class="form-input w-full border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-md shadow-sm"
+                required>
+              @inputError('lastname')
+              @each(message in $messages)
+              <p class="text-red-400">{{ message }}</p>
+              @end
+              @end
+            </div>
+            <div class="mb-4">
+              <label for="firstname" class="block text-gray-700 font-semibold mb-2">Prénom</label>
+              <input type="text" value="{{ old('firstname') || '' }}" id="firstname" name="firstname"
+                class="form-input w-full border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-md shadow-sm"
+                required>
+              @inputError('firstname')
+              @each(message in $messages)
+              <p class="text-red-400">{{ message }}</p>
+              @end
+              @end
+            </div>
+            <div class="mb-4">
+              <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+              <input type="email" value="{{ old('email') || '' }}" id="email" name="email"
+                class="form-input w-full border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-md shadow-sm"
+                required>
+              @inputError('email')
+              @each(message in $messages)
+              <p class="text-red-400">{{ message }}</p>
+              @end
+              @end
+            </div>
+            <div class="mb-4">
+              <label for="phone" class="block text-gray-700 font-semibold mb-2">Téléphone</label>
+              <input type="text" value="{{ old('phone') || '' }}" id="phone" name="phone"
+                class="form-input w-full border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-md shadow-sm"
+                required>
+              @inputError('phone')
+              @each(message in $messages)
+              <p class="text-red-400">{{ message }}</p>
+              @end
+              @end
+            </div>
+            <div class="mb-4">
+              <label for="gender" class="block text-gray-700 font-semibold mb-2">Genre</label>
+              <select id="gender" name="gender"
+                class="form-select w-full border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-md shadow-sm"
+                required>
+                <option value="0">Homme</option>
+                <option value="1">Femme</option>
+              </select>
+              @inputError('gender')
+              @each(message in $messages)
+              <p class="text-red-400">{{ message }}</p>
+              @end
+              @end
+            </div>
+            <div class="mb-4">
+              <label for="birthdate" class="block text-gray-700 font-semibold mb-2">Date de naissance</label>
+              <input type="date" value="{{ old('birthdate') || '' }}" id="date" name="birthdate"
+                class="form-input w-full border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-md shadow-sm"
+                required>
+              @inputError('birthdate')
+              @each(message in $messages)
+              <p class="text-red-400">{{ message }}</p>
+              @end
+              @end
+            </div>
+            <div class="mb-4">
+              <label for="department" class="block text-gray-700 font-semibold mb-2">Département</label>
+              <select id="department" name="department"
+                class="form-select w-full border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 rounded-md shadow-sm"
+                required>
+                <option value="0">Génie informatique</option>
+                <option value="1">Génie Civil</option>
+                <option value="2">MIAGE</option>
+                <option value="3">Génie Électrique</option>
+                <option value="4">Science Politique</option>
+                <option value="5">Droit</option>
+                <option value="6">Sociologie</option>
+                <option value="7">Économie</option>
+              </select>
+              @inputError('department')
+              @each(message in $messages)
+              <p class="text-red-400">{{ message }}</p>
+              @end
+              @end
+            </div>
+            <div class="mb-4">
+              <label for="address" class="block text-gray-700 font-semibold mb-2">Adresse</label>
+              <input id="address" value="{{ old('address') || '' }}" name="address"
+                class="form-textarea w-full border p-1 border-blue-400" placeholder="Quartier, Commune" required>
+              @inputError('address')
+              @each(message in $messages)
+              <p class="text-red-400">{{ message }}</p>
+              @end
+              @end
+            </div>
+            <div class="mb-4">
+              <label for="file" class="block text-gray-700 font-semibold mb-2">Fichier</label>
+              <input type="file" id="fichier" name="fichier" class="form-input w-full">
+              @inputError('file')
+              @each(message in $messages)
+              <p class="text-red-400">{{ message }}</p>
+              @end
+              @end
+            </div>
+            <div class="mt-6">
+              <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>
+            </div>
+        </form>
       </div>
-
-
-
-      <div class="mt-6">
-        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>
-      </div>
-    </form>
+    </div>
   </div>
 </body>
 

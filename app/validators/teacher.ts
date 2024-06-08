@@ -10,13 +10,13 @@ export const createTeacherValidator = vine.compile(
     phone: vine.string().regex(/^6[1256][0-9]{7}$/),
     gender: vine.number().range([Gender.Male, Gender.Female]),
     birthdate: vine.date().before('2002-01-01'),
-    file: vine.file({ extnames: ['jpg', 'png', 'pdf'], size: '20mb' }),
+    fichier: vine.file({ extnames: ['jpg', 'png', 'pdf'], size: '20mb' }),
     address: vine
       .string()
       .trim()
       .maxLength(255)
       .regex(/^[a-zA-Z0-9 ]*,[a-zA-Z0-9- ]*$/),
-    department: vine.number().range([DepartmentName.GIT, DepartmentName.Droit]),
+    department: vine.number().range([DepartmentName.GIT, DepartmentName.sociologie]),
   })
 )
 export const deleteTeacherValidator = vine.compile(
@@ -42,7 +42,7 @@ const messages = {
   'birthdate.before': 'La date de naissance doit être antérieur à la date du 01/01/2002',
   'department': 'Le department doit être un des departements disponibles',
   'department.range': 'Le department doit être un des departements disponibles',
-  'file': 'veuillez apporter vos fichier en format pdf',
+  'fichier': 'veuillez apporter vos fichier en format pdf',
 }
 const deleteMessages = {
   'id': "l'identifiant doit être un nombre entier",

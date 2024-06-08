@@ -5,7 +5,8 @@ import type { IGender } from '#enums/gender_type'
 import { DepartmentNameText } from '#enums/departments_name'
 import type { IDepartmentName } from '#enums/departments_name'
 import { createTeacherValidator, deleteTeacherValidator } from '#validators/teacher'
-import { cuid } from '@adonisjs/core/helpers'
+
+import teacher from '#models/teacher'
 
 export default class TeachersController {
   async form({ view }: HttpContext) {
@@ -13,7 +14,7 @@ export default class TeachersController {
   }
   async dashboard({ view }: HttpContext) {
     // Vous pouvez ajouter d'autres données nécessaires pour le dashboard ici
-    const teachers = await Teacher.all()
+    const teacher = await Teacher.all()
 
     // Rendre la vue du dashboard avec les données nécessaires
     return view.render('pages/teachers/dashbord')
@@ -25,7 +26,7 @@ export default class TeachersController {
   }
   async details({ view, params, response }: HttpContext) {
     try {
-      const teacher = await Teacher.findOrFail(params.id)
+      const teachers = await Teacher.findOrFail(params.id)
 
       return view.render('pages/teachers/details', { teacher })
     } catch (error) {
@@ -34,26 +35,6 @@ export default class TeachersController {
   }
   async store({ request, response, session }: HttpContext) {
     const { gender, department, ...payload } = await request.validateUsing(createTeacherValidator)
-    const file = request.file('file')
-
-    if (file) {
-      // Générer un nom de fichier unique
-      const fileName = `${cuid()}.${file.extname}`
-
-      // Déplacer le fichier vers le répertoire de stockage
-      await file.move(Helpers.tmpPath('uploads'), {
-        name: fileName,
-        overwrite: true,
-      })
-
-      // Vérifier si le déplacement du fichier a réussi
-      if (!file.isValid) {
-        throw new Error(file.errors())
-      }
-
-      // Sauvegarder le chemin du fichier dans la base de données
-      teacher.file_path = `uploads/${fileName}`
-    }
 
     try {
       const teacher = new Teacher()

@@ -27,14 +27,14 @@
         </tr>
       </thead>
       <tbody>
-        {{-- @foreach(conges as conge)
-        <tr>
-          <td class="border px-4 py-2">{{ conge.id }}</td>
-          <td class="border px-4 py-2">{{ conge.nom }}</td>
-          <td class="border px-4 py-2">{{ conge.debut }}</td>
-          <td class="border px-4 py-2">{{ conge.fin }}</td>
-          <td class="border px-4 py-2">{{ conge.statut }}</td>
-          <td class="border px-4 py-2 flex">
+        @foreach(conges as conge)
+        {{-- <tr>
+          <td class="border px-4 py-2">{{ `${teacher.id}` }}</td>
+          <td class="border px-4 py-2">{{ `${teacher.nom}` }}</td>
+          <td class="border px-4 py-2">{{ `${teacher.debut}` }}</td>
+          <td class="border px-4 py-2">{{ `${teacher.fin}`}}</td>
+          <td class="border px-4 py-2">{{ `${teacher.Statut}`}}</td> --}}
+          {{-- <td class="border px-4 py-2 flex">
             <a href="/conges/edit/{{ conge.id }}"
               class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Modifier</a>
             <form action="/conges/delete/{{ conge.id }}" method="POST">
@@ -42,10 +42,10 @@
               <button type="submit"
                 class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Supprimer</button>
             </form>
-          </td>
+          </td> --}}
         </tr>
-        @end
-      </tbody> --}}
+        @endforeach
+      </tbody>
     </table>
   </div>
 </body>

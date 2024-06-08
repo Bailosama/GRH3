@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des Stagiaires</title>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="bg-gray-100 font-sans antialiased">
+  <!-- Sidebar -->
+  <div class="flex min-h-screen">
+    <aside class="bg-gray-800 w-64 flex flex-col p-4 space-y-4">
+      <div class="flex items-center space-x-2">
+        <img src="path/to/your/avatar.jpg" alt="Avatar" class="w-10 h-10 rounded-full">
+        <div>
+          <h2 class="text-white text-lg">admin mr</h2>
+          <span class="text-gray-400">Administrateur</span>
+        </div>
+      </div>
+      <nav class="flex flex-col space-y-2">
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Tableau de bord</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Rentrées</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Élèves</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Calendrier scolaire</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Parents</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Prévision inscription</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Événements</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Comptes</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Liste des tâches</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white p-2 rounded">Réglages</a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Header -->
+      <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold">Gestion des Stagiaires</h1>
+        <div class="flex items-center space-x-4">
+          <span class="text-gray-600">2023-2024</span>
+          <button class="bg-gray-200 p-2 rounded-full">🔔</button>
+          <button class="bg-gray-200 p-2 rounded-full">✉️</button>
+          <img src="path/to/your/avatar.jpg" alt="Avatar" class="w-10 h-10 rounded-full">
+        </div>
+      </header>
+
+      <!-- Content -->
+
+      <div class="flex-1 p-6 space-y-6">
+        <!-- Form for adding an intern -->
+        <form class="space-y-4" method="post" action="">
+          {{ csrfField() }}
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold mb-4">Ajouter un stagiaire</h2>
+            <form class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input type="text" placeholder="Nom" class="p-2 border rounded">
+                <input type="text" placeholder="Prénom" class="p-2 border rounded">
+                <input type="number" placeholder="Age" class="p-2 border rounded">
+                <div class="flex items-center space-x-4">
+                  <label class="flex items-center">
+                    <input type="radio" name="sexe" value="Homme" class="mr-2">
+                    Homme
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="sexe" value="Femme" class="mr-2">
+                    Femme
+                  </label>
+                </div>
+                <input type="date" placeholder="Date de Naissance" class="p-2 border rounded">
+                <input type="text" placeholder="Ville" class="p-2 border rounded">
+                <input type="text" placeholder="Adresse" class="p-2 border rounded">
+                <input type="text" placeholder="Établissement" class="p-2 border rounded">
+                <input type="text" placeholder="Formation" class="p-2 border rounded">
+                <input type="text" placeholder="Encadrant" class="p-2 border rounded">
+              </div>
+              <button type="submit" class="p-2 bg-green-500 text-white rounded">Ajouter un stagiaire</button>
+            </form>
+          </div>
+
+          <!-- Table of interns -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold mb-4">Liste des Stagiaires</h2>
+            <table class="min-w-full bg-white">
+              <thead>
+                <tr>
+                  <th class="py-2 px-4 border-b">Nom</th>
+                  <th class="py-2 px-4 border-b">Prenom</th>
+                  <th class="py-2 px-4 border-b">Age</th>
+                  <th class="py-2 px-4 border-b">Sexe</th>
+                  <th class="py-2 px-4 border-b">Ville</th>
+                  <th class="py-2 px-4 border-b">Date de naissance</th>
+                  <th class="py-2 px-4 border-b">Adresse</th>
+                  <th class="py-2 px-4 border-b">Etablissement</th>
+                  <th class="py-2 px-4 border-b">Formation</th>
+                  <th class="py-2 px-4 border-b">Encadrant</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{-- <tr>
+                  <td class="py-2 px-4 border-b">Elyoussfi</td>
+                  <td class="py-2 px-4 border-b">Mohammed</td>
+                  <td class="py-2 px-4 border-b">25</td>
+                  <td class="py-2 px-4 border-b">Homme</td>
+                  <td class="py-2 px-4 border-b">Casablanca</td>
+                  <td class="py-2 px-4 border-b">15/06/1990</td>
+                  <td class="py-2 px-4 border-b">Quartier Almaarif</td>
+                  <td class="py-2 px-4 border-b">Université Hassan II</td>
+                  <td class="py-2 px-4 border-b">Licence Pro en développement informatique</td>
+                  <td class="py-2 px-4 border-b">M. Ahmed Ibrahim</td>
+                </tr> --}}
+                <!-- Add more rows as needed -->
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

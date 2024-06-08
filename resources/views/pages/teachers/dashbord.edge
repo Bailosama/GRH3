@@ -34,8 +34,6 @@
           <!-- Take Leave -->
           <div class="bg-white p-6 rounded-lg shadow-md">
             <h2 class="text-lg font-semibold mb-4">Prendre des Congés</h2>
-
-            <!-- Leave Form -->
             <form action="/take-leave" method="POST">
               <a href="{{ route('conges.index') }}"
                 class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</a>
@@ -44,13 +42,13 @@
 
           <!-- Add Student -->
           <div class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-lg font-semibold mb-4">Ajouter un Étudiant</h2>
+            <h2 class="text-lg font-semibold mb-4">Stage</h2>
             <!-- Add Student Form -->
-            <form action="/add-student" method="POST">
-              <!-- Student Form Fields -->
-              <!-- Example: Name, Email, Department -->
-              <!-- Use Tailwind CSS for styling -->
-              <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Ajouter</button>
+            <form action="" method="POST">
+              <a href="{{route('stage.index')}}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                ajouter</a>
+
+
             </form>
           </div>
 

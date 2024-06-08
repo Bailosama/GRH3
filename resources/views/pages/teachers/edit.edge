@@ -79,7 +79,7 @@
       <div class="mb-4">
         <label for="address" class="block text-gray-700 font-semibold mb-2">Adresse</label>
         <input id="address" value="{{ old('address') || teacher.address }}" name="address"
-          class="form-textarea w-full border p-1 border-blue-400" placeholder="Quartier/Commune" required>
+          class="form-textarea w-full border p-1 border-blue-400" placeholder="Quartier,Commune" required>
         @inputError('address')
         @each(message in $messages)
         <p class="text-red-400">{{ message }}</p>

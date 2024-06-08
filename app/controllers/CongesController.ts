@@ -26,7 +26,7 @@ export default class CongesController {
       conge.etat = etat
       await conge.save()
       session.flash('success', 'Congé ajouté avec succès')
-      return response.redirect('/conges')
+      return response.redirect().toRoute('post.store')
     } catch (error) {
       // En cas d'erreur, afficher un message d'erreur
       session.flash('error', "Une erreur est survenue lors de l'ajout du congé")

@@ -31,7 +31,7 @@ export default class Teacher extends BaseModel {
   declare department: string
 
   @column()
-  declare files: MultipartFile
+  declare fichier: MultipartFile
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
